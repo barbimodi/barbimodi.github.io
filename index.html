@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BM Horse – Benessere & Natura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #f5f0e8;
+      --panna:   #ede5d0;
+      --beige:   #d4c4a0;
+      --sand:    #b8a07a;
+      --terra:   #8b6b3d;
+      --marrone: #5c3d1e;
+      --bark:    #3a2410;
+      --text:    #2e1f0e;
+      --light:   #f9f6f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(245,240,232,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(139,107,61,0.15);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+    }
+
+    .nav-logo svg { width: 42px; height: 42px; }
+
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--bark);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--marrone);
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--terra);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--light) 0%, var(--panna) 50%, var(--beige) 100%);
+    }
+
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+    }
+    .hero-bg-circle.c1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, var(--terra), transparent 70%);
+      top: -200px; right: -150px;
+    }
+    .hero-bg-circle.c2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--sand), transparent 70%);
+      bottom: -150px; left: -100px;
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+      padding: 2rem;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero-logo {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 2rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--bark);
+      letter-spacing: 0.04em;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .hero-subtitle {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sand);
+      animation: fadeUp 1s ease 0.6s both;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--terra);
+      margin: 2rem auto;
+      animation: fadeUp 1s ease 0.7s both;
+    }
+
+    .hero-desc {
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--marrone);
+      animation: fadeUp 1s ease 0.8s both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--terra);
+      color: var(--terra);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: fadeUp 1s ease 1s both;
+    }
+
+    .btn:hover {
+      background: var(--terra);
+      color: var(--cream);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      animation: fadeUp 1s ease 1.2s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--sand), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.4); opacity: 0.4; }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 7rem 2rem; }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--bark);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--terra); }
+
+    .section-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--marrone);
+      max-width: 600px;
+    }
+
+    /* ── CHI SIAMO ── */
+    #chisiamo {
+      background: var(--light);
+    }
+
+    .chisiamo-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .chisiamo-visual {
+      position: relative;
+    }
+
+    .chisiamo-frame {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--panna), var(--beige));
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .chisiamo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(139,107,61,0.3);
+      border-radius: 2px;
+    }
+
+    .chisiamo-frame-icon {
+      opacity: 0.25;
+    }
+
+    .photo-placeholder-text {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      white-space: nowrap;
+    }
+
+    .chisiamo-accent {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100px;
+      height: 100px;
+      border-top: 2px solid var(--terra);
+      border-left: 2px solid var(--terra);
+    }
+
+    .chisiamo-accent2 {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      border-bottom: 2px solid var(--sand);
+      border-right: 2px solid var(--sand);
+    }
+
+    .chisiamo-text { padding: 1rem 0; }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: var(--beige);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    /* ── SERVIZI ── */
+    #servizi {
+      background: var(--panna);
+    }
+
+    .servizi-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .servizi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .servizi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .servizio-card {
+      background: var(--cream);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s;
+      cursor: default;
+    }
+
+    .servizio-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--terra);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .servizio-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(92,61,30,0.12); }
+    .servizio-card:hover::before { transform: scaleX(1); }
+
+    .servizio-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--beige);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .servizio-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--bark);
+      margin-bottom: 1rem;
+    }
+
+    .servizio-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--marrone);
+    }
+
+    .servizio-icon {
+      position: absolute;
+      top: 2.5rem; right: 2.5rem;
+      opacity: 0.12;
+    }
+
+    /* ── GALLERIA ── */
+    #galleria {
+      background: var(--bark);
+      color: var(--cream);
+    }
+
+    #galleria .section-label { color: var(--sand); }
+    #galleria .section-title { color: var(--cream); }
+
+    .galleria-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .galleria-header { margin-bottom: 3rem; }
+
+    .galleria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 4px;
+    }
+
+    .gallery-item {
+      background: var(--marrone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; }
+    .gallery-item:nth-child(2) { aspect-ratio: 1; }
+    .gallery-item:nth-child(3) { aspect-ratio: 1; }
+    .gallery-item:nth-child(4) { grid-column: span 2; aspect-ratio: 2/1; }
+
+    .gallery-item-inner {
+      width: 100%; height: 100%;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, var(--marrone), var(--bark));
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover .gallery-item-inner { transform: scale(1.04); }
+
+    .gallery-placeholder-icon { opacity: 0.3; }
+
+    .gallery-placeholder-text {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sand);
+      opacity: 0.7;
+    }
+
+    .gallery-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .btn-light {
+      border-color: var(--sand);
+      color: var(--sand);
+    }
+    .btn-light:hover {
+      background: var(--sand);
+      color: var(--bark);
+    }
+
+    /* ── CONTATTI ── */
+    #contatti {
+      background: var(--cream);
+    }
+
+    .contatti-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contatti-info { padding-top: 0.5rem; }
+
+    .contatti-items {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contatto-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .contatto-icon-wrap {
+      width: 42px; height: 42px;
+      border: 1px solid var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contatto-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.3rem;
+    }
+
+    .contatto-value {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--marrone);
+      line-height: 1.6;
+    }
+
+    /* FORM */
+    .contatti-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--beige);
+      padding: 0.7rem 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--terra); }
+
+    .form-group select { cursor: pointer; }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit { margin-top: 1rem; }
+
+    .btn-fill {
+      background: var(--terra);
+      color: var(--cream);
+      border-color: var(--terra);
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .btn-fill:hover {
+      background: var(--marrone);
+      border-color: var(--marrone);
+    }
+
+    /* MAP PLACEHOLDER */
+    .map-placeholder {
+      margin-top: 3rem;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--panna), var(--beige));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border: 1px solid var(--beige);
+    }
+
+    .map-placeholder-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bark);
+      color: var(--sand);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .footer-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--sand);
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .chisiamo-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .servizi-grid { grid-template-columns: 1fr; }
+      .galleria-grid { grid-template-columns: repeat(2,1fr); }
+      .gallery-item:nth-child(1) { grid-column: span 2; }
+      .gallery-item:nth-child(4) { grid-column: span 2; }
+      .contatti-inner { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .galleria-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <!-- LOGO SVG INLINE -->
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 20 C55 20 18 57 18 102 C18 147 55 184 100 184 C145 184 182 147 182 102 C182 57 145 20 100 20Z" stroke="#5c3d1e" stroke-width="7" fill="none" stroke-dasharray="260 80" stroke-dashoffset="0" stroke-linecap="round"/>
+        <path d="M85 28 C80 22 76 18 76 18" stroke="#5c3d1e" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M80 32 C75 26 72 21 72 21" stroke="#5c3d1e" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <!-- Horse head -->
+        <path d="M118 42 C112 38 104 36 98 40 C88 46 80 58 78 72 C76 84 80 96 86 104 C90 110 96 114 100 116 C108 118 116 114 122 106 C130 96 134 82 132 68 C130 56 126 46 118 42Z" fill="#5c3d1e"/>
+        <!-- Ear -->
+        <path d="M108 38 L112 28 L118 36 Z" fill="#5c3d1e"/>
+        <!-- Eye -->
+        <circle cx="112" cy="62" r="4" fill="#f5f0e8"/>
+        <circle cx="113" cy="62" r="2.2" fill="#3a2410"/>
+        <!-- Nostril -->
+        <path d="M104 100 C102 98 100 99 101 102 C102 105 106 105 107 102 C107.5 100 106 98 104 100Z" fill="#3a2410"/>
+        <!-- Jaw line -->
+        <path d="M86 104 C84 110 83 116 84 120 C85 124 88 126 90 124" stroke="#3a2410" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Mane -->
+        <path d="M118 42 C122 36 124 30 122 26" stroke="#5c3d1e" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M114 40 C118 34 120 28 118 24" stroke="#5c3d1e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-logo-text">BM HORSE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#chisiamo">Chi siamo</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#galleria">Galleria</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="hero-content">
+      <svg class="hero-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 20 C55 20 18 57 18 102 C18 147 55 184 100 184 C145 184 182 147 182 102 C182 57 145 20 100 20Z" stroke="#8b6b3d" stroke-width="7" fill="none" stroke-dasharray="260 80" stroke-linecap="round"/>
+        <path d="M85 28 C80 22 76 18 76 18" stroke="#8b6b3d" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M80 32 C75 26 72 21 72 21" stroke="#8b6b3d" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M118 42 C112 38 104 36 98 40 C88 46 80 58 78 72 C76 84 80 96 86 104 C90 110 96 114 100 116 C108 118 116 114 122 106 C130 96 134 82 132 68 C130 56 126 46 118 42Z" fill="#8b6b3d"/>
+        <path d="M108 38 L112 28 L118 36 Z" fill="#8b6b3d"/>
+        <circle cx="112" cy="62" r="4" fill="#f5f0e8"/>
+        <circle cx="113" cy="62" r="2.2" fill="#3a2410"/>
+        <path d="M104 100 C102 98 100 99 101 102 C102 105 106 105 107 102 C107.5 100 106 98 104 100Z" fill="#3a2410"/>
+        <path d="M86 104 C84 110 83 116 84 120 C85 124 88 126 90 124" stroke="#3a2410" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M118 42 C122 36 124 30 122 26" stroke="#8b6b3d" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M114 40 C118 34 120 28 118 24" stroke="#8b6b3d" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <h1 class="hero-title">BM <em>Horse</em></h1>
+      <p class="hero-subtitle">Benessere · Natura · Emozione</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        Dove il contatto con il cavallo diventa terapia, gioia e connessione profonda con la natura. Un luogo unico nel cuore del Piemonte.
+      </p>
+      <a href="#servizi" class="btn">Scopri i servizi</a>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scorri</span>
+    </div>
+  </section>
+
+  <!-- ── CHI SIAMO ── -->
+  <section id="chisiamo">
+    <div class="chisiamo-inner">
+      <div class="chisiamo-visual reveal">
+        <div class="chisiamo-accent"></div>
+        <div class="chisiamo-frame">
+          <svg class="chisiamo-frame-icon" width="80" height="80" viewBox="0 0 200 200" fill="none">
+            <path d="M118 42 C112 38 104 36 98 40 C88 46 80 58 78 72 C76 84 80 96 86 104 C90 110 96 114 100 116 C108 118 116 114 122 106 C130 96 134 82 132 68 C130 56 126 46 118 42Z" fill="#8b6b3d"/>
+          </svg>
+          <span class="photo-placeholder-text">Inserisci qui la tua foto</span>
+        </div>
+        <div class="chisiamo-accent2"></div>
+      </div>
+      <div class="chisiamo-text reveal reveal-delay-2">
+        <p class="section-label">Chi siamo</p>
+        <h2 class="section-title">Una passione<br>che <em>diventa cura</em></h2>
+        <span class="quote-mark">"</span>
+        <p class="section-body">
+          [Testo placeholder — inserisci qui la storia dell'attività, chi la gestisce, da quanti anni lavora con i cavalli, la sua filosofia e cosa rende BM Horse un'esperienza unica.]
+        </p>
+        <br>
+        <p class="section-body">
+          [Secondo paragrafo — puoi descrivere la struttura, i cavalli, il rapporto con gli animali e l'ambiente naturale in cui si svolge l'attività.]
+        </p>
+        <br>
+        <a href="#contatti" class="btn" style="margin-top:1rem;">Scrivici</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVIZI ── -->
+  <section id="servizi">
+    <div class="servizi-inner">
+      <div class="servizi-header">
+        <div class="reveal">
+          <p class="section-label">Cosa offriamo</p>
+          <h2 class="section-title">I nostri<br><em>Servizi</em></h2>
+        </div>
+        <p class="section-body reveal reveal-delay-2" style="max-width:360px;">
+          Ogni esperienza con BM Horse è pensata per creare un legame autentico tra l'uomo e il cavallo.
+        </p>
+      </div>
+
+      <div class="servizi-grid">
+        <!-- Card 1 -->
+        <div class="servizio-card reveal">
+          <svg class="servizio-icon" width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="28" stroke="#8b6b3d" stroke-width="2"/>
+            <path d="M20 35 C22 28 28 24 34 26 C38 28 40 32 38 38" stroke="#8b6b3d" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="servizio-number">01</div>
+          <h3 class="servizio-title">Ippoterapia &amp; Benessere</h3>
+          <p class="servizio-desc">[Descrizione del servizio — ad es. sedute di ippoterapia, riabilitazione equestre, benefici fisici e psicologici. A chi è rivolto, durata, modalità.]</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="servizio-card reveal reveal-delay-1">
+          <svg class="servizio-icon" width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <path d="M10 50 L30 15 L50 50 Z" stroke="#8b6b3d" stroke-width="2" fill="none"/>
+            <circle cx="30" cy="28" r="5" stroke="#8b6b3d" stroke-width="2"/>
+          </svg>
+          <div class="servizio-number">02</div>
+          <h3 class="servizio-title">Terapia con i Cavalli</h3>
+          <p class="servizio-desc">[Descrizione — pet therapy equestre, percorsi di crescita personale, supporto emotivo attraverso il rapporto con il cavallo. Per adulti, bambini, gruppi.]</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="servizio-card reveal reveal-delay-2">
+          <svg class="servizio-icon" width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <rect x="8" y="18" width="44" height="30" rx="2" stroke="#8b6b3d" stroke-width="2" fill="none"/>
+            <path d="M8 26 L52 26" stroke="#8b6b3d" stroke-width="2"/>
+            <circle cx="20" cy="12" r="4" stroke="#8b6b3d" stroke-width="2"/>
+            <circle cx="40" cy="12" r="4" stroke="#8b6b3d" stroke-width="2"/>
+          </svg>
+          <div class="servizio-number">03</div>
+          <h3 class="servizio-title">Feste &amp; Eventi</h3>
+          <p class="servizio-desc">[Descrizione — organizzazione di compleanni, feste scolastiche, eventi aziendali con coinvolgimento dei cavalli. Cosa include il pacchetto, quante persone, età minima.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERIA ── -->
+  <section id="galleria">
+    <div class="galleria-inner">
+      <div class="galleria-header reveal">
+        <p class="section-label">Le nostre immagini</p>
+        <h2 class="section-title">Galleria</h2>
+      </div>
+      <div class="galleria-grid">
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <svg class="gallery-placeholder-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="2" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <circle cx="14" cy="17" r="3" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <path d="M4 28 L12 21 L18 27 L25 20 L36 28" stroke="#d4c4a0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="gallery-placeholder-text">Foto principale</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <svg class="gallery-placeholder-icon" width="32" height="32" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="2" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <circle cx="14" cy="17" r="3" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <path d="M4 28 L12 21 L18 27 L25 20 L36 28" stroke="#d4c4a0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="gallery-placeholder-text">Foto 2</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <svg class="gallery-placeholder-icon" width="32" height="32" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="2" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <circle cx="14" cy="17" r="3" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <path d="M4 28 L12 21 L18 27 L25 20 L36 28" stroke="#d4c4a0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="gallery-placeholder-text">Foto 3</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-inner">
+            <svg class="gallery-placeholder-icon" width="32" height="32" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="2" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <circle cx="14" cy="17" r="3" stroke="#d4c4a0" stroke-width="1.5" fill="none"/>
+              <path d="M4 28 L12 21 L18 27 L25 20 L36 28" stroke="#d4c4a0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="gallery-placeholder-text">Foto panoramica</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-cta reveal">
+        <p style="font-size:0.8rem; color:var(--sand); margin-bottom:1.5rem; letter-spacing:0.1em;">
+          Le foto reali verranno inserite in questa sezione
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTATTI ── -->
+  <section id="contatti">
+    <div class="contatti-inner">
+      <div class="contatti-info reveal">
+        <p class="section-label">Dove siamo</p>
+        <h2 class="section-title">Vieni a<br><em>trovarci</em></h2>
+        <div class="contatti-items">
+          <div class="contatto-item">
+            <div class="contatto-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b6b3d" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contatto-label">Indirizzo</p>
+              <p class="contatto-value">Via Pietro Cerri<br>Boca (NO), Piemonte</p>
+            </div>
+          </div>
+          <div class="contatto-item">
+            <div class="contatto-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b6b3d" stroke-width="1.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.07 1.18C.07.12.97.01 2 .01h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contatto-label">Telefono</p>
+              <p class="contatto-value">[Inserisci numero di telefono]</p>
+            </div>
+          </div>
+          <div class="contatto-item">
+            <div class="contatto-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b6b3d" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contatto-label">Email</p>
+              <p class="contatto-value">[Inserisci indirizzo email]</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b6b3d" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="map-placeholder-text">Mappa Google — Boca (NO)</span>
+          <span style="font-size:0.6rem; color:var(--sand); letter-spacing:0.1em;">Sostituisci con iframe Google Maps</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <p class="section-label">Scrivici</p>
+        <h2 class="section-title" style="margin-bottom:2rem;">Prenota o<br><em>Informati</em></h2>
+        <form class="contatti-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" placeholder="Il tuo nome" required/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="la@tuaemail.it" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="servizio">Servizio di interesse</label>
+            <select id="servizio">
+              <option value="">Seleziona...</option>
+              <option>Ippoterapia &amp; Benessere</option>
+              <option>Terapia con i Cavalli</option>
+              <option>Feste &amp; Eventi</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="messaggio">Messaggio</label>
+            <textarea id="messaggio" placeholder="Raccontaci cosa stai cercando..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-fill">Invia messaggio</button>
+          </div>
+          <p id="form-feedback" style="display:none; font-size:0.8rem; color:var(--terra); text-align:center; margin-top:1rem; letter-spacing:0.1em;"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">
+      <svg width="32" height="32" viewBox="0 0 200 200" fill="none">
+        <path d="M118 42 C112 38 104 36 98 40 C88 46 80 58 78 72 C76 84 80 96 86 104 C90 110 96 114 100 116 C108 118 116 114 122 106 C130 96 134 82 132 68 C130 56 126 46 118 42Z" fill="#d4c4a0"/>
+        <path d="M108 38 L112 28 L118 36 Z" fill="#d4c4a0"/>
+      </svg>
+      <span class="footer-logo-text">BM HORSE</span>
+    </div>
+    <p class="footer-copy">© 2025 BM Horse · Via Pietro Cerri, Boca (NO)</p>
+    <ul class="footer-links">
+      <li><a href="#chisiamo">Chi siamo</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const fb = document.getElementById('form-feedback');
+      fb.textContent = '✓ Messaggio inviato! Ti risponderemo al più presto.';
+      fb.style.display = 'block';
+      e.target.reset();
+      setTimeout(() => { fb.style.display = 'none'; }, 5000);
+    }
+  </script>
+</body>
+</html>
