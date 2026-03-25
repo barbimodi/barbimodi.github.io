@@ -120,7 +120,7 @@
 
     /* CONTATTI */
     #contatti { padding:6rem 4rem; background:var(--cream); }
-    .contatti-wrap { max-width:700px; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center; gap:2rem; }
+    .contatti-wrap { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.2fr; gap:6rem; align-items:start; }
     .contact-info-title { font-family:'Arial',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:700; color:var(--bark); margin-bottom:.8rem; line-height:1.2; }
     .contact-info-title em { font-style:normal; font-weight:900; color:var(--terra); }
     .contact-intro { font-size:.9rem; font-weight:300; line-height:1.8; color:var(--marrone); margin-bottom:2.5rem; }
@@ -371,10 +371,10 @@
 <section id="contatti">
   <div class="contatti-wrap">
     <div class="reveal">
-      <p class="label" style="justify-content:center;">Dove siamo</p>
+      <p class="label">Dove siamo</p>
       <h2 class="contact-info-title">Vieni a<br><em>trovarci</em></h2>
       <p class="contact-intro">Siamo a Boca, in provincia di Novara, immersi nella natura del Piemonte. Contattaci per informazioni o per prenotare la tua esperienza.</p>
-      <div class="contact-items" style="align-items:flex-start; width:100%;">
+      <div class="contact-items">
         <div class="contact-item">
           <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b6b3d" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div><p class="contact-label">Indirizzo</p><p class="contact-value">Via Pietro Cerri<br>Boca (NO), Piemonte</p></div>
@@ -394,7 +394,25 @@
         <span class="map-box-sub">Sostituisci con iframe Google Maps</span>
       </div>
     </div>
+    <div class="reveal reveal-delay-2">
+      <p class="label">Scrivici</p>
+      <h2 class="contact-info-title" style="margin-bottom:2rem;">Prenota o <em>Informati</em></h2>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label for="nome">Nome</label><input type="text" id="nome" placeholder="Il tuo nome" required/></div>
+          <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="la@tuaemail.it" required/></div>
+        </div>
+        <div class="form-group"><label for="telefono">Telefono</label><input type="tel" id="telefono" placeholder="+39 ..."/></div>
+        <div class="form-group">
+          <label for="servizio">Servizio di interesse</label>
+          <select id="servizio"><option value="">Seleziona...</option><option>Ippoterapia &amp; Benessere</option><option>Terapia con i Cavalli</option><option>Feste &amp; Eventi</option><option>Informazioni generali</option></select>
+        </div>
+        <div class="form-group"><label for="messaggio">Messaggio</label><textarea id="messaggio" placeholder="Raccontaci cosa stai cercando..."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-block">Invia messaggio</button>
+        <p id="form-feedback">✓ Messaggio inviato! Ti risponderemo al più presto.</p>
+      </form>
     </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -437,6 +455,14 @@
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold:0.1 });
   reveals.forEach(el => observer.observe(el));
-  </script>
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const fb = document.getElementById('form-feedback');
+    fb.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => { fb.style.display = 'none'; }, 5000);
+  }
+</script>
 </body>
 </html>
