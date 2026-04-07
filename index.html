@@ -31,7 +31,6 @@
     #hero { height:100vh; min-height:600px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
     .hero-bg { position:absolute; inset:0; background:var(--light); z-index:0; }
 
-    /* Movimento ampio (±60-70px) e lento (19-26s) */
     @keyframes floatA {
       0%   { transform: translate(0,0) scale(1); }
       25%  { transform: translate(70px,-65px) scale(1.06); }
@@ -61,11 +60,12 @@
       100% { transform: translate(0,0) scale(1); }
     }
 
-    .hero-shape { position:absolute; border-radius:50%; background:#9a7a55; filter:blur(3px); z-index:1; }
-    .hero-shape.s1 { width:680px; height:680px; top:-220px; right:-120px;  opacity:.22; animation:floatA 22s ease-in-out infinite; }
-    .hero-shape.s2 { width:520px; height:520px; bottom:-160px; left:-80px;  opacity:.19; animation:floatB 26s ease-in-out infinite; }
-    .hero-shape.s3 { width:340px; height:340px; top:12%; left:-20px;        opacity:.14; animation:floatC 19s ease-in-out infinite 2s; }
-    .hero-shape.s4 { width:260px; height:260px; bottom:8%; right:4%;        opacity:.12; animation:floatD 23s ease-in-out infinite 4s; }
+    /* Bolle: colore scuro #6b4c28, opacità alzata */
+    .hero-shape { position:absolute; border-radius:50%; background:#6b4c28; filter:blur(3px); z-index:1; }
+    .hero-shape.s1 { width:680px; height:680px; top:-220px; right:-120px;  opacity:.32; animation:floatA 22s ease-in-out infinite; }
+    .hero-shape.s2 { width:520px; height:520px; bottom:-160px; left:-80px;  opacity:.28; animation:floatB 26s ease-in-out infinite; }
+    .hero-shape.s3 { width:340px; height:340px; top:12%; left:-20px;        opacity:.22; animation:floatC 19s ease-in-out infinite 2s; }
+    .hero-shape.s4 { width:260px; height:260px; bottom:8%; right:4%;        opacity:.18; animation:floatD 23s ease-in-out infinite 4s; }
 
     .hero-overlay { position:absolute; inset:0; background:transparent; z-index:1; }
     .hero-content { position:relative; z-index:2; text-align:center; padding:2rem; max-width:700px; animation:fadeUp 1.2s ease both; }
