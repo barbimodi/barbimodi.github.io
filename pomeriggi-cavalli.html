@@ -49,36 +49,79 @@
     .reveal-delay-1 { transition-delay:.15s; }
     .reveal-delay-2 { transition-delay:.3s; }
 
+
+    /* PAGE HERO */
     .page-hero {
-      height:320px; background:linear-gradient(135deg,#3a2410,#5c3d1e);
+      height:420px;
+      background:linear-gradient(135deg,#3a2410,#5c3d1e);
+      background-image: url('assets/images/pomeriggi-cavalli.jpg');
+      background-size:cover; background-position:center;
       display:flex; align-items:flex-end; justify-content:flex-start;
-      padding:0 4rem 3rem; margin-top:70px; position:relative; overflow:hidden;
+      padding:0 5rem 3.5rem; margin-top:70px; position:relative; overflow:hidden;
     }
-    .page-hero::before { content:''; position:absolute; inset:0; background:rgba(20,10,0,.25); }
-    .page-hero-inner { position:relative; z-index:1; }
+    .page-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,0,.75) 40%, rgba(20,10,0,.2)); }
+    .page-hero-inner { position:relative; z-index:1; max-width:700px; }
     .page-hero-eyebrow { font-size:.68rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--sand); margin-bottom:.8rem; display:block; }
-    .page-hero-title { font-family:'Arial',sans-serif; font-size:clamp(1.8rem,4vw,3rem); font-weight:700; color:var(--cream); line-height:1.1; }
+    .page-hero-title { font-family:'Arial',sans-serif; font-size:clamp(1.8rem,4vw,3.2rem); font-weight:700; color:var(--cream); line-height:1.1; }
     .page-hero-title em { font-style:normal; color:var(--sand); }
-    .page-content { max-width:800px; margin:0 auto; padding:6rem 4rem; text-align:center; }
-    .page-coming { display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); background:var(--panna); padding:.6rem 1.5rem; margin-bottom:2rem; }
-    .page-content .section-title { margin-bottom:1rem; }
-    .page-content .section-text { max-width:560px; margin:0 auto 2rem; }
+
+    /* CONTENUTO */
+    .page-wrap { max-width:960px; margin:0 auto; padding:5rem 4rem; }
+
+    .intro-block { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-bottom:4rem; }
+    .intro-headline { font-family:'Arial',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:700; color:var(--bark); line-height:1.25; margin-bottom:1.2rem; }
+    .intro-headline em { font-style:normal; color:var(--terra); }
+    .intro-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); }
+
+    /* ATTIVITÀ */
+    .activities-section { background:var(--panna); padding:3.5rem; margin-bottom:3rem; }
+    .activities-label { font-size:.65rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); margin-bottom:1.5rem; display:flex; align-items:center; gap:.8rem; }
+    .activities-label::before { content:''; width:24px; height:1px; background:var(--terra); }
+    .activities-list { list-style:none; display:flex; flex-direction:column; gap:1.1rem; }
+    .activities-list li { display:flex; align-items:flex-start; gap:1.2rem; font-size:.9rem; font-weight:300; color:var(--marrone); line-height:1.7; }
+    .activity-num { min-width:28px; height:28px; background:var(--terra); color:var(--cream); font-size:.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+
+    /* INFO BOX */
+    .info-strip { display:flex; gap:0; margin-bottom:3rem; border:1.5px solid var(--beige); overflow:hidden; }
+    .info-item { flex:1; padding:1.8rem 2rem; display:flex; flex-direction:column; gap:.4rem; border-right:1.5px solid var(--beige); }
+    .info-item:last-child { border-right:none; }
+    .info-tag { font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--terra); }
+    .info-val { font-family:'Arial',sans-serif; font-size:1.4rem; font-weight:700; color:var(--bark); }
+    .info-sub { font-size:.78rem; font-weight:300; color:var(--marrone); }
+
+    /* CTA */
+    .cta-block { background:linear-gradient(135deg,var(--bark),var(--marrone)); padding:3.5rem; text-align:center; }
+    .cta-title { font-family:'Arial',sans-serif; font-size:clamp(1.2rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:.8rem; line-height:1.3; }
+    .cta-title em { font-style:normal; color:var(--sand); }
+    .cta-sub { font-size:.88rem; font-weight:300; color:rgba(237,229,208,.75); margin-bottom:2rem; }
+    .btn { display:inline-block; padding:.9rem 2.5rem; font-family:'Arial',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:all .3s; border:2px solid transparent; }
+    .btn-cream { background:var(--cream); color:var(--bark); border-color:var(--cream); }
+    .btn-cream:hover { background:var(--sand); border-color:var(--sand); color:var(--bark); }
+
     @media(max-width:1024px){
       nav{padding:0 2rem;}
-      .page-hero{padding:0 2rem 2.5rem;}
-      .page-content{padding:4rem 2rem;}
+      .page-hero{padding:0 2rem 2.5rem; height:340px;}
+      .page-wrap{padding:4rem 2.5rem;}
+      .intro-block{grid-template-columns:1fr; gap:1.5rem;}
       footer{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:700px){
       nav{padding:0 1.2rem;}
       .nav-links{display:none;}
       .page-hero{padding:0 1.5rem 2rem;}
+      .page-wrap{padding:3rem 1.5rem;}
+      .activities-section{padding:2.5rem 1.5rem;}
+      .info-strip{flex-direction:column;}
+      .info-item{border-right:none; border-bottom:1.5px solid var(--beige);}
+      .info-item:last-child{border-bottom:none;}
+      .cta-block{padding:2.5rem 1.5rem;}
       footer{grid-template-columns:1fr;padding:3rem 1.5rem;}
       .footer-bottom{padding:1rem 1.5rem;}
     }
   </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="assets/images/logo-bm-horse.png" alt="BM Horse Logo" style="height:46px; width:auto;">
@@ -92,17 +135,61 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <span class="page-hero-eyebrow">Esperienze uniche</span>
-    <h1 class="page-hero-title">Pomeriggi con i cavalli</h1>
+    <span class="page-hero-eyebrow">Esperienze uniche · BM Horse</span>
+    <h1 class="page-hero-title">Pomeriggi con<br><em>i cavalli</em></h1>
   </div>
 </div>
 
-<section class="page-content reveal">
-  <span class="page-coming">Contenuto in arrivo</span>
-  <h2 class="section-title">Stiamo preparando<br>questa <em>pagina</em></h2>
-  <p class="section-text">Questa sezione è in fase di sviluppo. Torna presto per scoprire tutti i dettagli su "Pomeriggi con i cavalli".</p>
-  <a href="index.html#contatti" class="btn btn-primary">Contattaci per info</a>
-</section>
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <div class="intro-block reveal">
+    <div>
+      <h2 class="intro-headline">Un'esperienza <em>unica</em><br>per i tuoi bambini</h2>
+    </div>
+    <div>
+      <p class="intro-text">Dai ai tuoi bambini l'opportunità di scoprire il mondo dei cavalli e degli asinelli in un ambiente sicuro e accogliente. Presso BM Horse offriamo un pomeriggio speciale dove i bambini potranno interagire con questi meravigliosi animali senza doverli montare, vivendo il contatto diretto con la natura e imparando il rispetto per gli animali.</p>
+    </div>
+  </div>
+
+  <!-- ATTIVITÀ -->
+  <div class="activities-section reveal">
+    <p class="activities-label">Cosa faranno i bambini</p>
+    <ul class="activities-list">
+      <li><span class="activity-num">1</span>Conoscere i cavalli e gli asinelli da vicino e scoprire le loro caratteristiche</li>
+      <li><span class="activity-num">2</span>Dare da mangiare e accarezzare i cavalli e gli asinelli</li>
+      <li><span class="activity-num">3</span>Aiutare a preparare cavalli e asini per la passeggiata a mano</li>
+      <li><span class="activity-num">4</span>Imparare a prendersi cura degli animali e a rispettarli</li>
+    </ul>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-strip reveal">
+    <div class="info-item">
+      <span class="info-tag">Età consigliata</span>
+      <span class="info-val">3 – 12 anni</span>
+      <span class="info-sub">Adatto a tutti i bambini</span>
+    </div>
+    <div class="info-item">
+      <span class="info-tag">Durata</span>
+      <span class="info-val">60 minuti</span>
+      <span class="info-sub">Su prenotazione</span>
+    </div>
+    <div class="info-item">
+      <span class="info-tag">Supervisione</span>
+      <span class="info-val">Staff esperto</span>
+      <span class="info-sub">Sempre presente durante l'attività</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-block reveal">
+  <h2 class="cta-title">Regala ai tuoi bambini<br>un'esperienza <em>indimenticabile</em></h2>
+  <p class="cta-sub">Non perdere l'occasione di offrire loro un pomeriggio unico ed educativo a contatto con la natura.</p>
+  <a href="index.html#contatti" class="btn btn-cream">Contattaci</a>
+</div>
 
 <footer>
   <div>
