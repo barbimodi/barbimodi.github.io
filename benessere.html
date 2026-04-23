@@ -131,6 +131,16 @@
     @media(max-width:700px){
       .activities-grid{grid-template-columns:1fr;}
     }
+
+    .activities-grid .activity-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width:50%;
+      margin:0 auto;
+      width:100%;
+    }
+    @media(max-width:700px){
+      .activities-grid .activity-card:last-child:nth-child(odd){max-width:100%;}
+    }
   </style>
 </head>
 <body>
@@ -204,7 +214,8 @@
       <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Team Building</p></div>
       <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Incontri di Crescita Personale</p></div>
       <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Gestione dello Stress</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Corsi di Attività di Gruppo</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Corsi</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Attività di Gruppo</p></div>
     </div>
   </div>
 
