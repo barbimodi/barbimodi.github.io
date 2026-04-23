@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Feste di compleanno – BM Horse</title>
+  <title>Pomeriggi con i cavalli – BM Horse</title>
   <style>
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --cream:#f5f0e8; --panna:#ede5d0; --beige:#d4c4a0; --sand:#b8a07a;
@@ -12,8 +13,6 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family:'Arial',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
-
-    /* NAV */
     nav {
       position:fixed; top:0; left:0; right:0; z-index:200;
       display:flex; align-items:center; justify-content:space-between;
@@ -26,56 +25,53 @@
     .nav-links a:hover { color:var(--cream); }
     .nav-cta { background:var(--terra); color:var(--cream)!important; padding:.5rem 1.3rem; }
     .nav-cta:hover { background:var(--sand)!important; color:var(--bark)!important; }
-
-    /* BOTTONI */
     .btn { display:inline-block; padding:.9rem 2.5rem; font-family:'Arial',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:all .3s; border:2px solid transparent; }
-    .btn-cream { background:var(--cream); color:var(--bark); border-color:var(--cream); }
-    .btn-cream:hover { background:var(--sand); border-color:var(--sand); color:var(--bark); }
+    .btn-primary { background:var(--terra); color:var(--cream); border-color:var(--terra); }
+    .btn-primary:hover { background:var(--sand); border-color:var(--sand); color:var(--bark); }
     .btn-outline { background:transparent; color:var(--bark); border-color:var(--terra); }
     .btn-outline:hover { background:var(--terra); color:var(--cream); border-color:var(--terra); }
-
-    /* REVEAL */
+    .label { font-size:.68rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); margin-bottom:1rem; display:flex; align-items:center; gap:.8rem; }
+    .label::before { content:''; width:30px; height:1px; background:var(--terra); }
+    .section-title { font-family:'Arial',sans-serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:700; line-height:1.2; color:var(--bark); margin-bottom:1.5rem; }
+    .section-title em { font-style:normal; font-weight:900; color:var(--terra); }
+    .section-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); margin-bottom:1rem; }
+    footer { background:var(--bark); color:var(--sand); padding:4rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    .footer-brand-name { font-family:'Arial',sans-serif; font-size:1.4rem; color:var(--cream); margin:1rem 0 .8rem; letter-spacing:.05em; }
+    .footer-brand-desc { font-size:.82rem; font-weight:300; line-height:1.8; opacity:.7; }
+    .footer-col-title { font-size:.68rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--beige); margin-bottom:1.5rem; }
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.7rem; }
+    .footer-links a { font-size:.82rem; font-weight:300; color:var(--sand); text-decoration:none; opacity:.7; transition:opacity .2s; }
+    .footer-links a:hover { opacity:1; }
+    .footer-bottom { background:rgba(0,0,0,.2); padding:1.2rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.72rem; color:var(--sand); opacity:.6; flex-wrap:wrap; gap:1rem; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s ease,transform .8s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal-delay-1 { transition-delay:.15s; }
     .reveal-delay-2 { transition-delay:.3s; }
 
-    /* HERO */
+
+    /* PAGE HERO */
     .page-hero {
-      height:560px;
-      background:linear-gradient(135deg,#5c3d1e,#8b6b3d);
-      background-image:url('assets/images/Feste2.jpeg');
+      height:420px;
+      background:linear-gradient(135deg,#3a2410,#5c3d1e);
+      background-image: url('assets/images/pomeriggi-cavalli.jpg');
       background-size:cover; background-position:center;
       display:flex; align-items:flex-end; justify-content:flex-start;
       padding:0 5rem 3.5rem; margin-top:70px; position:relative; overflow:hidden;
     }
-    .page-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,0,.78) 40%, rgba(20,10,0,.15)); }
+    .page-hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,10,0,.75) 40%, rgba(20,10,0,.2)); }
     .page-hero-inner { position:relative; z-index:1; max-width:700px; }
     .page-hero-eyebrow { font-size:.68rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--sand); margin-bottom:.8rem; display:block; }
     .page-hero-title { font-family:'Arial',sans-serif; font-size:clamp(1.8rem,4vw,3.2rem); font-weight:700; color:var(--cream); line-height:1.1; }
     .page-hero-title em { font-style:normal; color:var(--sand); }
 
-    /* LAYOUT CONTENUTO */
+    /* CONTENUTO */
     .page-wrap { max-width:960px; margin:0 auto; padding:5rem 4rem; }
 
-    /* INTRO BICOLONNA */
     .intro-block { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-bottom:4rem; }
     .intro-headline { font-family:'Arial',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:700; color:var(--bark); line-height:1.25; margin-bottom:1.2rem; }
     .intro-headline em { font-style:normal; color:var(--terra); }
-    .intro-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); margin-bottom:1rem; }
-
-    /* CITAZIONE ATMOSFERICA */
-    .quote-block {
-      background:var(--bark); color:var(--cream);
-      padding:3rem 4rem; margin-bottom:4rem;
-      position:relative; overflow:hidden;
-    }
-    .quote-block::before {
-      content:'"'; position:absolute; top:-1rem; left:2rem;
-      font-size:10rem; font-weight:900; color:var(--terra); opacity:.35; line-height:1;
-    }
-    .quote-text { font-size:clamp(1rem,1.5vw,1.2rem); font-weight:300; line-height:1.9; color:var(--beige); position:relative; z-index:1; font-style:italic; }
-    .quote-text em { font-style:normal; color:var(--sand); font-weight:700; }
+    .intro-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); }
 
     /* ATTIVITÀ */
     .activities-section { background:var(--panna); padding:3.5rem; margin-bottom:3rem; }
@@ -85,7 +81,7 @@
     .activities-list li { display:flex; align-items:flex-start; gap:1.2rem; font-size:.9rem; font-weight:300; color:var(--marrone); line-height:1.7; }
     .activity-num { min-width:28px; height:28px; background:var(--terra); color:var(--cream); font-size:.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
 
-    /* INFO STRIP */
+    /* INFO BOX */
     .info-strip { display:flex; gap:0; margin-bottom:3rem; border:1.5px solid var(--beige); overflow:hidden; }
     .info-item { flex:1; padding:1.8rem 2rem; display:flex; flex-direction:column; gap:.4rem; border-right:1.5px solid var(--beige); }
     .info-item:last-child { border-right:none; }
@@ -98,24 +94,15 @@
     .cta-title { font-family:'Arial',sans-serif; font-size:clamp(1.2rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:.8rem; line-height:1.3; }
     .cta-title em { font-style:normal; color:var(--sand); }
     .cta-sub { font-size:.88rem; font-weight:300; color:rgba(237,229,208,.75); margin-bottom:2rem; }
+    .btn { display:inline-block; padding:.9rem 2.5rem; font-family:'Arial',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:all .3s; border:2px solid transparent; }
+    .btn-cream { background:var(--cream); color:var(--bark); border-color:var(--cream); }
+    .btn-cream:hover { background:var(--sand); border-color:var(--sand); color:var(--bark); }
 
-    /* FOOTER */
-    footer { background:var(--bark); color:var(--sand); padding:4rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
-    .footer-brand-name { font-family:'Arial',sans-serif; font-size:1.4rem; color:var(--cream); margin:1rem 0 .8rem; letter-spacing:.05em; }
-    .footer-brand-desc { font-size:.82rem; font-weight:300; line-height:1.8; opacity:.7; }
-    .footer-col-title { font-size:.68rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--beige); margin-bottom:1.5rem; }
-    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.7rem; }
-    .footer-links a { font-size:.82rem; font-weight:300; color:var(--sand); text-decoration:none; opacity:.7; transition:opacity .2s; }
-    .footer-links a:hover { opacity:1; }
-    .footer-bottom { background:rgba(0,0,0,.2); padding:1.2rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.72rem; color:var(--sand); opacity:.6; flex-wrap:wrap; gap:1rem; }
-
-    /* RESPONSIVE */
     @media(max-width:1024px){
       nav{padding:0 2rem;}
-      .page-hero{padding:0 2rem 2.5rem; height:560px;}
+      .page-hero{padding:0 2rem 2.5rem; height:340px;}
       .page-wrap{padding:4rem 2.5rem;}
       .intro-block{grid-template-columns:1fr; gap:1.5rem;}
-      .quote-block{padding:2.5rem 2.5rem;}
       footer{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:700px){
@@ -124,12 +111,11 @@
       .page-hero{padding:0 1.5rem 2rem;}
       .page-wrap{padding:3rem 1.5rem;}
       .activities-section{padding:2.5rem 1.5rem;}
-      .quote-block{padding:2rem 1.5rem;}
       .info-strip{flex-direction:column;}
       .info-item{border-right:none; border-bottom:1.5px solid var(--beige);}
       .info-item:last-child{border-bottom:none;}
       .cta-block{padding:2.5rem 1.5rem;}
-      footer{grid-template-columns:1fr; padding:3rem 1.5rem;}
+      footer{grid-template-columns:1fr;padding:3rem 1.5rem;}
       .footer-bottom{padding:1rem 1.5rem;}
     }
   </style>
@@ -142,16 +128,15 @@
   </a>
   <ul class="nav-links">
     <li><a href="chi-siamo.html">Chi siamo</a></li>
-    <li><a href="index.html#pillars">Scopri il Mondo</a></li>
+    <li><a href="index.html#servizi">Servizi</a></li>
     <li><a href="index.html#contatti" class="nav-cta">Contattaci</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <span class="page-hero-eyebrow">Momenti speciali · BM Horse</span>
-    <h1 class="page-hero-title">Feste di compleanno<br><em>in natura</em></h1>
+    <span class="page-hero-eyebrow">Esperienze uniche · BM Horse</span>
+    <h1 class="page-hero-title">Pomeriggi con<br><em>i cavalli</em></h1>
   </div>
 </div>
 
@@ -160,44 +145,40 @@
   <!-- INTRO -->
   <div class="intro-block reveal">
     <div>
-      <h2 class="intro-headline">Un compleanno<br><em>indimenticabile</em><br>a contatto con la natura</h2>
+      <h2 class="intro-headline">Un'esperienza <em>unica</em><br>per i tuoi bambini</h2>
     </div>
     <div>
-      <p class="intro-text">Presso BM Horse offriamo feste di compleanno uniche per bambini dai 2 ai 14 anni, in un ambiente naturale incantevole circondato da prati verdi. I bambini potranno giocare liberamente con elementi naturali come balle di fieno, legni e pietre, e interagire con i nostri cavalli e l'asinello in un'atmosfera rilassata e divertente.</p>
+      <p class="intro-text">Dai ai tuoi bambini l'opportunità di scoprire il mondo dei cavalli e degli asinelli in un ambiente sicuro e accogliente. Presso BM Horse offriamo un pomeriggio speciale dove i bambini potranno interagire con questi meravigliosi animali senza doverli montare, vivendo il contatto diretto con la natura e imparando il rispetto per gli animali.</p>
     </div>
-  </div>
-
-  <!-- CITAZIONE ATMOSFERICA -->
-  <div class="quote-block reveal">
-    <p class="quote-text">Immagina un giorno di sole, con il canto degli uccelli, il nitrire dei cavalli e il ragliare dell'asino come sottofondo, mentre i bambini esplorano e scoprono <em>la natura in tutta la sua bellezza</em>. La nostra area feste è progettata per offrire un'esperienza unica, coinvolgente e genuina, con spazi aperti e attrezzati per garantire la sicurezza e il divertimento dei più piccoli.</p>
   </div>
 
   <!-- ATTIVITÀ -->
   <div class="activities-section reveal">
-    <p class="activities-label">La festa include</p>
+    <p class="activities-label">Cosa faranno i bambini</p>
     <ul class="activities-list">
-      <li><span class="activity-num">1</span>Giochi e attività all'aperto in piena libertà</li>
-      <li><span class="activity-num">2</span>Interazione con i cavalli e l'asinello in tutta sicurezza</li>
-      <li><span class="activity-num">3</span>Area giochi attrezzata con materiali naturali (balle di fieno, legni, pietre)</li>
+      <li><span class="activity-num">1</span>Conoscere i cavalli e gli asinelli da vicino e scoprire le loro caratteristiche</li>
+      <li><span class="activity-num">2</span>Dare da mangiare e accarezzare i cavalli e gli asinelli</li>
+      <li><span class="activity-num">3</span>Aiutare a preparare cavalli e asini per la passeggiata a mano</li>
+      <li><span class="activity-num">4</span>Imparare a prendersi cura degli animali e a rispettarli</li>
     </ul>
   </div>
 
   <!-- INFO -->
   <div class="info-strip reveal">
     <div class="info-item">
-      <span class="info-tag">Età</span>
-      <span class="info-val">2 – 14 anni</span>
+      <span class="info-tag">Età consigliata</span>
+      <span class="info-val">3 – 12 anni</span>
       <span class="info-sub">Adatto a tutti i bambini</span>
     </div>
     <div class="info-item">
-      <span class="info-tag">Ambiente</span>
-      <span class="info-val">All'aperto</span>
-      <span class="info-sub">Prati verdi e spazi naturali</span>
+      <span class="info-tag">Durata</span>
+      <span class="info-val">60 minuti</span>
+      <span class="info-sub">Su prenotazione</span>
     </div>
     <div class="info-item">
-      <span class="info-tag">Prenotazione</span>
-      <span class="info-val">Obbligatoria</span>
-      <span class="info-sub">Per garantire la data desiderata</span>
+      <span class="info-tag">Supervisione</span>
+      <span class="info-val">Staff esperto</span>
+      <span class="info-sub">Sempre presente durante l'attività</span>
     </div>
   </div>
 
@@ -205,12 +186,11 @@
 
 <!-- CTA -->
 <div class="cta-block reveal">
-  <h2 class="cta-title">Regala a tuo figlio<br>un compleanno <em>davvero speciale</em></h2>
-  <p class="cta-sub">Prenota subito per garantire la data desiderata e offrire ai tuoi bambini un'esperienza unica ed educativa.</p>
+  <h2 class="cta-title">Regala ai tuoi bambini<br>un'esperienza <em>indimenticabile</em></h2>
+  <p class="cta-sub">Non perdere l'occasione di offrire loro un pomeriggio unico ed educativo a contatto con la natura.</p>
   <a href="index.html#contatti" class="btn btn-cream">Contattaci</a>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <img src="assets/images/logo-bm-horse.png" alt="BM Horse Logo" style="height:64px; width:auto;">
@@ -221,7 +201,7 @@
     <p class="footer-col-title">Navigazione</p>
     <ul class="footer-links">
       <li><a href="chi-siamo.html">Chi siamo</a></li>
-      <li><a href="index.html#pillars">Scopri il Mondo</a></li>
+      <li><a href="index.html#servizi">Servizi</a></li>
       <li><a href="index.html#contatti">Contatti</a></li>
     </ul>
   </div>
@@ -238,7 +218,6 @@
   <span>© 2025 BM Horse – Tutti i diritti riservati</span>
   <span>Via Pietro Cerri · Baraggia di Boca (NO) · Piemonte</span>
 </div>
-
 <script>
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {

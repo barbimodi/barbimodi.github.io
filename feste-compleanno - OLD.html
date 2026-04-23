@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Benessere – BM Horse</title>
+  <title>Feste di compleanno – BM Horse</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --cream:#f5f0e8; --panna:#ede5d0; --beige:#d4c4a0; --sand:#b8a07a;
-      --terra:#8b6b3d; --marrone:#5c3d1e; --bark:#3a2410; --text:#2e1f0e;
+      --terra:#8b6b3d; --marrone:#5c3d1e; --bark:#3a2410; --text:#2e1f0e; --light:#f9f6f0;
     }
     html { scroll-behavior: smooth; }
     body { font-family:'Arial',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
 
     /* NAV */
-    nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 4rem; height:70px; background:rgba(58,36,16,0.93); backdrop-filter:blur(10px); }
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 4rem; height:70px;
+      background:rgba(58,36,16,0.93); backdrop-filter:blur(10px);
+    }
     .nav-logo { display:flex; align-items:center; gap:.8rem; text-decoration:none; }
     .nav-links { display:flex; gap:2.5rem; list-style:none; }
     .nav-links a { text-decoration:none; font-size:.78rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--beige); transition:color .3s; }
@@ -22,10 +27,12 @@
     .nav-cta { background:var(--terra); color:var(--cream)!important; padding:.5rem 1.3rem; }
     .nav-cta:hover { background:var(--sand)!important; color:var(--bark)!important; }
 
-    /* BTN */
+    /* BOTTONI */
     .btn { display:inline-block; padding:.9rem 2.5rem; font-family:'Arial',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:all .3s; border:2px solid transparent; }
     .btn-cream { background:var(--cream); color:var(--bark); border-color:var(--cream); }
     .btn-cream:hover { background:var(--sand); border-color:var(--sand); color:var(--bark); }
+    .btn-outline { background:transparent; color:var(--bark); border-color:var(--terra); }
+    .btn-outline:hover { background:var(--terra); color:var(--cream); border-color:var(--terra); }
 
     /* REVEAL */
     .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s ease,transform .8s ease; }
@@ -35,10 +42,10 @@
 
     /* HERO */
     .page-hero {
-      height:560px;
-      background:linear-gradient(135deg,#3a2410,#8b6b3d);
-      background-image:url('assets/images/Benessere 2.1.png');
-      background-size:cover; background-position:60% 45%;
+      height:420px;
+      background:linear-gradient(135deg,#5c3d1e,#8b6b3d);
+      background-image:url('assets/images/Feste2.jpeg');
+      background-size:cover; background-position:center;
       display:flex; align-items:flex-end; justify-content:flex-start;
       padding:0 5rem 3.5rem; margin-top:70px; position:relative; overflow:hidden;
     }
@@ -48,34 +55,42 @@
     .page-hero-title { font-family:'Arial',sans-serif; font-size:clamp(1.8rem,4vw,3.2rem); font-weight:700; color:var(--cream); line-height:1.1; }
     .page-hero-title em { font-style:normal; color:var(--sand); }
 
-    /* WRAP */
+    /* LAYOUT CONTENUTO */
     .page-wrap { max-width:960px; margin:0 auto; padding:5rem 4rem; }
 
-    /* INTRO */
-    .intro-block { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin-bottom:4.5rem; }
+    /* INTRO BICOLONNA */
+    .intro-block { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-bottom:4rem; }
     .intro-headline { font-family:'Arial',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:700; color:var(--bark); line-height:1.25; margin-bottom:1.2rem; }
     .intro-headline em { font-style:normal; color:var(--terra); }
-    .intro-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); }
+    .intro-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); margin-bottom:1rem; }
 
-    /* BENEFICI 2×2 */
-    .benefits-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:4rem; }
-    .benefit-card { background:var(--panna); padding:2.2rem 2rem; display:flex; flex-direction:column; gap:.8rem; }
-    .benefit-icon { font-size:1.6rem; line-height:1; }
-    .benefit-title { font-family:'Arial',sans-serif; font-size:.92rem; font-weight:700; color:var(--bark); letter-spacing:.03em; }
-    .benefit-text { font-size:.82rem; font-weight:300; color:var(--marrone); line-height:1.75; }
-
-    /* CITAZIONE */
-    .quote-block { background:var(--bark); padding:3rem 4rem; margin-bottom:4rem; position:relative; overflow:hidden; }
-    .quote-block::before { content:'"'; position:absolute; top:-1.5rem; left:2rem; font-size:10rem; font-weight:900; color:var(--terra); opacity:.3; line-height:1; }
-    .quote-text { font-size:clamp(1rem,1.5vw,1.15rem); font-weight:300; line-height:1.9; color:var(--beige); font-style:italic; position:relative; z-index:1; }
+    /* CITAZIONE ATMOSFERICA */
+    .quote-block {
+      background:var(--bark); color:var(--cream);
+      padding:3rem 4rem; margin-bottom:4rem;
+      position:relative; overflow:hidden;
+    }
+    .quote-block::before {
+      content:'"'; position:absolute; top:-1rem; left:2rem;
+      font-size:10rem; font-weight:900; color:var(--terra); opacity:.35; line-height:1;
+    }
+    .quote-text { font-size:clamp(1rem,1.5vw,1.2rem); font-weight:300; line-height:1.9; color:var(--beige); position:relative; z-index:1; font-style:italic; }
     .quote-text em { font-style:normal; color:var(--sand); font-weight:700; }
+
+    /* ATTIVITÀ */
+    .activities-section { background:var(--panna); padding:3.5rem; margin-bottom:3rem; }
+    .activities-label { font-size:.65rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); margin-bottom:1.5rem; display:flex; align-items:center; gap:.8rem; }
+    .activities-label::before { content:''; width:24px; height:1px; background:var(--terra); }
+    .activities-list { list-style:none; display:flex; flex-direction:column; gap:1.1rem; }
+    .activities-list li { display:flex; align-items:flex-start; gap:1.2rem; font-size:.9rem; font-weight:300; color:var(--marrone); line-height:1.7; }
+    .activity-num { min-width:28px; height:28px; background:var(--terra); color:var(--cream); font-size:.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
 
     /* INFO STRIP */
     .info-strip { display:flex; gap:0; margin-bottom:3rem; border:1.5px solid var(--beige); overflow:hidden; }
     .info-item { flex:1; padding:1.8rem 2rem; display:flex; flex-direction:column; gap:.4rem; border-right:1.5px solid var(--beige); }
     .info-item:last-child { border-right:none; }
     .info-tag { font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--terra); }
-    .info-val { font-family:'Arial',sans-serif; font-size:1.2rem; font-weight:700; color:var(--bark); line-height:1.2; }
+    .info-val { font-family:'Arial',sans-serif; font-size:1.4rem; font-weight:700; color:var(--bark); }
     .info-sub { font-size:.78rem; font-weight:300; color:var(--marrone); }
 
     /* CTA */
@@ -94,11 +109,12 @@
     .footer-links a:hover { opacity:1; }
     .footer-bottom { background:rgba(0,0,0,.2); padding:1.2rem 4rem; display:flex; justify-content:space-between; align-items:center; font-size:.72rem; color:var(--sand); opacity:.6; flex-wrap:wrap; gap:1rem; }
 
+    /* RESPONSIVE */
     @media(max-width:1024px){
       nav{padding:0 2rem;}
-      .page-hero{padding:0 2rem 2.5rem; height:560px;}
+      .page-hero{padding:0 2rem 2.5rem; height:340px;}
       .page-wrap{padding:4rem 2.5rem;}
-      .intro-block{grid-template-columns:1fr; gap:2rem;}
+      .intro-block{grid-template-columns:1fr; gap:1.5rem;}
       .quote-block{padding:2.5rem 2.5rem;}
       footer{grid-template-columns:1fr 1fr;}
     }
@@ -107,7 +123,7 @@
       .nav-links{display:none;}
       .page-hero{padding:0 1.5rem 2rem;}
       .page-wrap{padding:3rem 1.5rem;}
-      .benefits-grid{grid-template-columns:1fr;}
+      .activities-section{padding:2.5rem 1.5rem;}
       .quote-block{padding:2rem 1.5rem;}
       .info-strip{flex-direction:column;}
       .info-item{border-right:none; border-bottom:1.5px solid var(--beige);}
@@ -115,21 +131,6 @@
       .cta-block{padding:2.5rem 1.5rem;}
       footer{grid-template-columns:1fr; padding:3rem 1.5rem;}
       .footer-bottom{padding:1rem 1.5rem;}
-    }
-    /* ATTIVITÀ BENESSERE */
-    .activities-wrap { margin-bottom:4rem; }
-    .activities-intro { text-align:center; max-width:760px; margin:0 auto 2.2rem; }
-    .activities-label-center { font-size:.65rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); margin-bottom:1.2rem; display:flex; align-items:center; justify-content:center; gap:.8rem; }
-    .activities-label-center::before, .activities-label-center::after { content:''; width:40px; height:1px; background:var(--terra); }
-    .activities-title { font-family:'Arial',sans-serif; font-size:clamp(1.35rem,2.5vw,2rem); font-weight:700; line-height:1.25; color:var(--bark); margin-bottom:1rem; text-align:center; }
-    .activities-title em { font-style:normal; color:var(--terra); }
-    .activities-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); text-align:center; }
-    .activities-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; }
-    .activity-card { background:var(--panna); padding:1.5rem 1.5rem 1.4rem; border-left:4px solid var(--terra); min-height:110px; }
-    .activity-kicker { font-size:.62rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--terra); margin-bottom:.7rem; }
-    .activity-name { font-family:'Arial',sans-serif; font-size:1rem; font-weight:700; line-height:1.35; color:var(--bark); }
-    @media(max-width:700px){
-      .activities-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -149,8 +150,8 @@
 <!-- HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <span class="page-hero-eyebrow">Salute &amp; armonia · BM Horse</span>
-    <h1 class="page-hero-title">Benessere e armonia<br><em>con gli animali</em></h1>
+    <span class="page-hero-eyebrow">Momenti speciali · BM Horse</span>
+    <h1 class="page-hero-title">Feste di compleanno<br><em>in natura</em></h1>
   </div>
 </div>
 
@@ -159,76 +160,44 @@
   <!-- INTRO -->
   <div class="intro-block reveal">
     <div>
-      <h2 class="intro-headline">Ritrova <em>l'equilibrio</em><br>attraverso il contatto<br>con la natura</h2>
+      <h2 class="intro-headline">Un compleanno<br><em>indimenticabile</em><br>a contatto con la natura</h2>
     </div>
     <div>
-      <p class="intro-text">L'incontro con i cavalli e gli asini presso BM Horse può aiutarti a ritrovare l'equilibrio emotivo, la serenità e il relax. Attraverso attività guidate e interazioni con i nostri animali, inizierai un percorso personalizzato di benessere — senza mai salire sugli animali — per un'esperienza sicura e profondamente rilassante.</p>
+      <p class="intro-text">Presso BM Horse offriamo feste di compleanno uniche per bambini dai 2 ai 14 anni, in un ambiente naturale incantevole circondato da prati verdi. I bambini potranno giocare liberamente con elementi naturali come balle di fieno, legni e pietre, e interagire con i nostri cavalli e l'asinello in un'atmosfera rilassata e divertente.</p>
     </div>
   </div>
 
-  <!-- BENEFICI -->
-  <div class="benefits-grid reveal">
-    <div class="benefit-card">
-      <span class="benefit-icon">🌿</span>
-      <p class="benefit-title">Equilibrio emotivo</p>
-      <p class="benefit-text">Riequilibra le tue emozioni e riduci lo stress attraverso il contatto autentico con gli animali e la natura.</p>
-    </div>
-    <div class="benefit-card reveal-delay-1">
-      <span class="benefit-icon">🌬️</span>
-      <p class="benefit-title">Rilascio della tensione</p>
-      <p class="benefit-text">Scarica la tensione accumulata e ritrova la calma in un ambiente naturale accogliente e privo di fretta.</p>
-    </div>
-    <div class="benefit-card reveal-delay-1">
-      <span class="benefit-icon">✨</span>
-      <p class="benefit-title">Autostima e fiducia</p>
-      <p class="benefit-text">Migliora la tua autostima e la fiducia in te stesso, guidato da animali che rispondono con sincerità.</p>
-    </div>
-    <div class="benefit-card reveal-delay-2">
-      <span class="benefit-icon">🍃</span>
-      <p class="benefit-title">Connessione con la natura</p>
-      <p class="benefit-text">Connettiti con la natura e con te stesso, lontano dal rumore quotidiano, in un luogo di pura autenticità.</p>
-    </div>
-  </div>
-  <!-- ATTIVITÀ -->
-  <div class="activities-wrap reveal">
-    <div class="activities-intro">
-      <p class="activities-label-center">Percorsi proposti</p>
-      <h2 class="activities-title">Attività di <em>benessere</em><br>e crescita personale</h2>
-
-    </div>
-    <div class="activities-grid">
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Coaching</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Mindfulness</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Bagni di Suono</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Meditazioni</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Team Building</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Incontri di Crescita Personale</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Gestione dello Stress</p></div>
-      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Corsi di Attività di Gruppo</p></div>
-    </div>
-  </div>
-
-  <!-- CITAZIONE -->
+  <!-- CITAZIONE ATMOSFERICA -->
   <div class="quote-block reveal">
-    <p class="quote-text">Ritorna a te stesso e scopri il benessere con BM Horse: un percorso <em>unico e personalizzato</em>, accompagnato dal nostro staff esperto, nel rispetto totale degli animali e della tua persona.</p>
+    <p class="quote-text">Immagina un giorno di sole, con il canto degli uccelli, il nitrire dei cavalli e il ragliare dell'asino come sottofondo, mentre i bambini esplorano e scoprono <em>la natura in tutta la sua bellezza</em>. La nostra area feste è progettata per offrire un'esperienza unica, coinvolgente e genuina, con spazi aperti e attrezzati per garantire la sicurezza e il divertimento dei più piccoli.</p>
+  </div>
+
+  <!-- ATTIVITÀ -->
+  <div class="activities-section reveal">
+    <p class="activities-label">La festa include</p>
+    <ul class="activities-list">
+      <li><span class="activity-num">1</span>Giochi e attività all'aperto in piena libertà</li>
+      <li><span class="activity-num">2</span>Interazione con i cavalli e l'asinello in tutta sicurezza</li>
+      <li><span class="activity-num">3</span>Area giochi attrezzata con materiali naturali (balle di fieno, legni, pietre)</li>
+    </ul>
   </div>
 
   <!-- INFO -->
   <div class="info-strip reveal">
     <div class="info-item">
-      <span class="info-tag">Durata</span>
-      <span class="info-val">Da concordare</span>
-      <span class="info-sub">Percorso personalizzato</span>
+      <span class="info-tag">Età</span>
+      <span class="info-val">2 – 14 anni</span>
+      <span class="info-sub">Adatto a tutti i bambini</span>
     </div>
     <div class="info-item">
-      <span class="info-tag">Modalità</span>
-      <span class="info-val">A terra</span>
-      <span class="info-sub">Senza mai salire sugli animali</span>
+      <span class="info-tag">Ambiente</span>
+      <span class="info-val">All'aperto</span>
+      <span class="info-sub">Prati verdi e spazi naturali</span>
     </div>
     <div class="info-item">
-      <span class="info-tag">Accompagnamento</span>
-      <span class="info-val">Staff esperto</span>
-      <span class="info-sub">Sempre presente e qualificato</span>
+      <span class="info-tag">Prenotazione</span>
+      <span class="info-val">Obbligatoria</span>
+      <span class="info-sub">Per garantire la data desiderata</span>
     </div>
   </div>
 
@@ -236,8 +205,8 @@
 
 <!-- CTA -->
 <div class="cta-block reveal">
-  <h2 class="cta-title">Inizia il tuo percorso<br>di <em>benessere</em> oggi</h2>
-  <p class="cta-sub">Scrivici per scoprire come costruire insieme il tuo percorso personalizzato a contatto con i nostri animali.</p>
+  <h2 class="cta-title">Regala a tuo figlio<br>un compleanno <em>davvero speciale</em></h2>
+  <p class="cta-sub">Prenota subito per garantire la data desiderata e offrire ai tuoi bambini un'esperienza unica ed educativa.</p>
   <a href="index.html#contatti" class="btn btn-cream">Contattaci</a>
 </div>
 
