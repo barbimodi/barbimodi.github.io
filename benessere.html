@@ -37,8 +37,8 @@
     .page-hero {
       height:420px;
       background:linear-gradient(135deg,#3a2410,#8b6b3d);
-      background-image:url('assets/images/benessere.jpg');
-      background-size:cover; background-position:center;
+      background-image:url('assets/images/Benessere 2.1.png');
+      background-size:cover; background-position:60% 45%;
       display:flex; align-items:flex-end; justify-content:flex-start;
       padding:0 5rem 3.5rem; margin-top:70px; position:relative; overflow:hidden;
     }
@@ -116,6 +116,21 @@
       footer{grid-template-columns:1fr; padding:3rem 1.5rem;}
       .footer-bottom{padding:1rem 1.5rem;}
     }
+    /* ATTIVITÀ BENESSERE */
+    .activities-wrap { margin-bottom:4rem; }
+    .activities-intro { text-align:center; max-width:760px; margin:0 auto 2.2rem; }
+    .activities-label-center { font-size:.65rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--terra); margin-bottom:1.2rem; display:flex; align-items:center; justify-content:center; gap:.8rem; }
+    .activities-label-center::before, .activities-label-center::after { content:''; width:40px; height:1px; background:var(--terra); }
+    .activities-title { font-family:'Arial',sans-serif; font-size:clamp(1.35rem,2.5vw,2rem); font-weight:700; line-height:1.25; color:var(--bark); margin-bottom:1rem; text-align:center; }
+    .activities-title em { font-style:normal; color:var(--terra); }
+    .activities-text { font-size:.9rem; font-weight:300; line-height:1.9; color:var(--marrone); text-align:center; }
+    .activities-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; }
+    .activity-card { background:var(--panna); padding:1.5rem 1.5rem 1.4rem; border-left:4px solid var(--terra); min-height:110px; }
+    .activity-kicker { font-size:.62rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--terra); margin-bottom:.7rem; }
+    .activity-name { font-family:'Arial',sans-serif; font-size:1rem; font-weight:700; line-height:1.35; color:var(--bark); }
+    @media(max-width:700px){
+      .activities-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
@@ -172,6 +187,24 @@
       <span class="benefit-icon">🍃</span>
       <p class="benefit-title">Connessione con la natura</p>
       <p class="benefit-text">Connettiti con la natura e con te stesso, lontano dal rumore quotidiano, in un luogo di pura autenticità.</p>
+    </div>
+  </div>
+  <!-- ATTIVITÀ -->
+  <div class="activities-wrap reveal">
+    <div class="activities-intro">
+      <p class="activities-label-center">Percorsi proposti</p>
+      <h2 class="activities-title">Attività di <em>benessere</em><br>e crescita personale</h2>
+
+    </div>
+    <div class="activities-grid">
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Coaching</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Mindfulness</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Bagni di Suono</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Meditazioni</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Team Building</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Incontri di Crescita Personale</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Gestione dello Stress</p></div>
+      <div class="activity-card"><p class="activity-kicker">Percorso</p><p class="activity-name">Corsi di Attività di Gruppo</p></div>
     </div>
   </div>
 
