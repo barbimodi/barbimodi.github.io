@@ -104,7 +104,7 @@
     /* PILLARS */
     #pillars { background:var(--panna); padding:4rem 4rem; min-height:calc(100vh - 70px); display:flex; flex-direction:column; justify-content:center; }
     .pillars-header { text-align:center; margin-bottom:2.5rem; }
-    .pillars-grid { max-width:1100px; width:100%; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; flex:1; }
+    .pillars-grid { max-width:1400px; width:100%; margin:0 auto; display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; flex:1; }
     .pillar-card { background:var(--cream); overflow:hidden; transition:transform .4s,box-shadow .4s; display:flex; flex-direction:column; }
     .pillar-card:hover { transform:translateY(-8px); box-shadow:0 25px 60px rgba(92,61,30,.15); }
     .pillar-img { height:320px; overflow:hidden; position:relative; background:var(--beige); }
@@ -194,7 +194,7 @@
 
     /* RESPONSIVE */
     @media(max-width:1024px){
-      .pillars-grid{grid-template-columns:repeat(2,1fr);}
+      .pillars-grid{grid-template-columns:repeat(3,1fr);}
       #pillars{padding:4rem 2.5rem;}
       nav{padding:0 2rem;}
       #chisiamo{grid-template-columns:1fr;} .about-content{padding:3rem 2rem;}
@@ -271,159 +271,6 @@
   </div>
 </div>
 
-<!-- BENESSERE HIGHLIGHT -->
-<section id="benessere-home" style="background:var(--bark);padding:6rem 4rem;overflow:hidden;position:relative;">
-
-  <div style="position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:rgba(139,107,61,.12);pointer-events:none;"></div>
-  <div style="position:absolute;bottom:-80px;left:-80px;width:320px;height:320px;border-radius:50%;background:rgba(139,107,61,.08);pointer-events:none;"></div>
-
-  <div style="max-width:1200px;margin:0 auto;position:relative;z-index:1;">
-
-    <!-- HEADER -->
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:5rem;">
-      <div>
-        <p style="font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem;">
-          <span style="display:inline-block;width:30px;height:1px;background:var(--sand);"></span>Il cuore di BM Horse
-        </p>
-        <h2 style="font-family:'Arial',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:1.5rem;">
-          Benessere &amp;<br><em style="font-style:normal;color:var(--sand);">Armonia con gli Animali</em>
-        </h2>
-        <p style="font-size:.92rem;font-weight:300;line-height:1.9;color:var(--beige);opacity:.85;">
-          L'incontro con i cavalli e gli asini presso BM Horse può aiutarti a ritrovare l'equilibrio emotivo, la serenità e il relax. Un percorso personalizzato, senza mai salire sugli animali, per un'esperienza sicura e profondamente rilassante.
-        </p>
-      </div>
-      <div style="position:relative;">
-        <div style="aspect-ratio:4/5;overflow:hidden;background:linear-gradient(135deg,var(--marrone),var(--bark));">
-          <img src="assets/images/Benessere 2.1.png" alt="Benessere e armonia con gli animali"
-               style="width:100%;height:100%;object-fit:cover;object-position:60% 40%;display:block;"
-               onerror="this.style.display='none'">
-        </div>
-        <div style="position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;border:2px solid var(--sand);opacity:.3;pointer-events:none;"></div>
-      </div>
-    </div>
-
-    <!-- 4 BENEFICI -->
-    <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:4rem;">
-      <div style="background:rgba(255,255,255,.07);padding:2rem 1.5rem;border-top:3px solid var(--sand);">
-        <span style="font-size:1.6rem;display:block;margin-bottom:.8rem;">🌿</span>
-        <p style="font-size:.88rem;font-weight:700;color:var(--cream);margin-bottom:.5rem;">Equilibrio emotivo</p>
-        <p style="font-size:.8rem;font-weight:300;color:var(--beige);line-height:1.75;opacity:.85;">Riequilibra le tue emozioni e riduci lo stress attraverso il contatto autentico con gli animali e la natura.</p>
-      </div>
-      <div style="background:rgba(255,255,255,.07);padding:2rem 1.5rem;border-top:3px solid var(--sand);">
-        <span style="font-size:1.6rem;display:block;margin-bottom:.8rem;">🌬️</span>
-        <p style="font-size:.88rem;font-weight:700;color:var(--cream);margin-bottom:.5rem;">Rilascio della tensione</p>
-        <p style="font-size:.8rem;font-weight:300;color:var(--beige);line-height:1.75;opacity:.85;">Scarica la tensione accumulata e ritrova la calma in un ambiente naturale accogliente e privo di fretta.</p>
-      </div>
-      <div style="background:rgba(255,255,255,.07);padding:2rem 1.5rem;border-top:3px solid var(--sand);">
-        <span style="font-size:1.6rem;display:block;margin-bottom:.8rem;">✨</span>
-        <p style="font-size:.88rem;font-weight:700;color:var(--cream);margin-bottom:.5rem;">Autostima e fiducia</p>
-        <p style="font-size:.8rem;font-weight:300;color:var(--beige);line-height:1.75;opacity:.85;">Migliora la tua autostima e la fiducia in te stesso, guidato da animali che rispondono con sincerità.</p>
-      </div>
-      <div style="background:rgba(255,255,255,.07);padding:2rem 1.5rem;border-top:3px solid var(--sand);">
-        <span style="font-size:1.6rem;display:block;margin-bottom:.8rem;">🍃</span>
-        <p style="font-size:.88rem;font-weight:700;color:var(--cream);margin-bottom:.5rem;">Connessione con la natura</p>
-        <p style="font-size:.8rem;font-weight:300;color:var(--beige);line-height:1.75;opacity:.85;">Connettiti con la natura e con te stesso, lontano dal rumore quotidiano, in un luogo di pura autenticità.</p>
-      </div>
-    </div>
-
-    <!-- CITAZIONE -->
-    <div class="reveal" style="background:rgba(255,255,255,.05);border-left:4px solid var(--sand);padding:2.5rem 3rem;margin-bottom:4rem;position:relative;">
-      <span style="position:absolute;top:-1rem;left:2rem;font-size:8rem;font-weight:900;color:var(--sand);opacity:.2;line-height:1;">"</span>
-      <p style="font-size:clamp(1rem,1.5vw,1.15rem);font-weight:300;line-height:1.9;color:var(--beige);font-style:italic;position:relative;z-index:1;">
-        Ritorna a te stesso e scopri il benessere con BM Horse: un percorso <em style="font-style:normal;color:var(--sand);font-weight:700;">unico e personalizzato</em>, accompagnato dal nostro staff esperto, nel rispetto totale degli animali e della tua persona.
-      </p>
-    </div>
-
-    <!-- PERCORSI -->
-    <div class="reveal" style="margin-bottom:4rem;">
-      <p style="font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:2rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:.8rem;">
-        <span style="display:inline-block;width:30px;height:1px;background:var(--sand);"></span>
-        Percorsi proposti
-        <span style="display:inline-block;width:30px;height:1px;background:var(--sand);"></span>
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;">
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Coaching</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Mindfulness</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Bagni di Suono</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Meditazioni</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Team Building</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Incontri di Crescita Personale</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Gestione dello Stress</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Corsi</p>
-        </div>
-        <div style="background:rgba(255,255,255,.07);border-left:3px solid var(--sand);padding:.9rem 1.1rem;grid-column:1/-1;max-width:25%;margin:0 auto;width:100%;">
-          <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin-bottom:.3rem;">Percorso</p>
-          <p style="font-size:.88rem;font-weight:600;color:var(--cream);">Attività di Gruppo</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- INFO STRIP -->
-    <div class="reveal" style="display:flex;border:1.5px solid rgba(184,160,122,.3);margin-bottom:3.5rem;overflow:hidden;">
-      <div style="flex:1;padding:1.8rem 2rem;border-right:1.5px solid rgba(184,160,122,.3);">
-        <p style="font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:.4rem;">Durata</p>
-        <p style="font-family:'Arial',sans-serif;font-size:1.2rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:.3rem;">Da concordare</p>
-        <p style="font-size:.78rem;font-weight:300;color:var(--beige);opacity:.75;">Percorso personalizzato</p>
-      </div>
-      <div style="flex:1;padding:1.8rem 2rem;border-right:1.5px solid rgba(184,160,122,.3);">
-        <p style="font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:.4rem;">Modalità</p>
-        <p style="font-family:'Arial',sans-serif;font-size:1.2rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:.3rem;">A terra</p>
-        <p style="font-size:.78rem;font-weight:300;color:var(--beige);opacity:.75;">Senza mai salire sugli animali</p>
-      </div>
-      <div style="flex:1;padding:1.8rem 2rem;">
-        <p style="font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:.4rem;">Accompagnamento</p>
-        <p style="font-family:'Arial',sans-serif;font-size:1.2rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:.3rem;">Staff esperto</p>
-        <p style="font-size:.78rem;font-weight:300;color:var(--beige);opacity:.75;">Sempre presente e qualificato</p>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="reveal" style="text-align:center;">
-      <a href="benessere.html" style="display:inline-flex;align-items:center;gap:.7rem;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);text-decoration:none;border:2px solid var(--sand);padding:.9rem 2.5rem;transition:all .3s;" onmouseover="this.style.background='var(--sand)';this.style.color='var(--bark)';" onmouseout="this.style.background='transparent';this.style.color='var(--cream)';">
-        Scopri di più &nbsp;→
-      </a>
-    </div>
-
-  </div>
-
-  <style>
-    @media(max-width:1024px){
-      #benessere-home{padding:5rem 2.5rem !important;}
-      #benessere-home > div > div:first-child{grid-template-columns:1fr !important;gap:2.5rem !important;}
-      #benessere-home .reveal[style*="repeat(4"]{grid-template-columns:repeat(2,1fr) !important;}
-    }
-    @media(max-width:700px){
-      #benessere-home{padding:4rem 1.5rem !important;}
-      #benessere-home .reveal[style*="repeat(4"]{grid-template-columns:1fr !important;}
-      #benessere-home > div > div[style*="flex;border"]{flex-direction:column !important;}
-    }
-  </style>
-</section>
-
-
 <!-- 5 PILLAR -->
 <section id="pillars">
   <div class="pillars-header reveal">
@@ -471,6 +318,15 @@
       </div>
     </div>
 
+    <div class="pillar-card reveal reveal-delay-1">
+      <div class="pillar-img" style="background:linear-gradient(135deg,var(--bark),var(--terra));">
+        <img src="assets/images/Ippoterapia.png" alt="Benessere">
+      </div>
+      <div class="pillar-body">
+        <h3 class="pillar-title">Benessere</h3>
+        <a href="benessere.html" class="pillar-link">Scopri di più →</a>
+      </div>
+    </div>
 
   </div>
 </section>
