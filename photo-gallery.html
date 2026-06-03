@@ -194,7 +194,25 @@
       .gallery-page{padding:2.5rem 1.5rem;}
       .gallery-overview{grid-template-columns:1fr;}
     }
-  </style>
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .gallery-item.large  { grid-column: span 7; min-height: 420px; }
+  .gallery-item.tall   { grid-column: span 5; min-height: 420px; }
+  .gallery-item.medium { grid-column: span 4; min-height: 260px; }
+  .gallery-item.wide   { grid-column: span 8; min-height: 260px; }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+  }
+</style>
 </head>
 <body>
 
@@ -264,19 +282,11 @@
       <p class="section-desc">Qui potremo inserire immagini della struttura, dei cavalli, dello staff e dell'atmosfera generale del centro.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-placeholder large">
-        <div class="placeholder-content">
-          <span class="placeholder-tag">Hero photo</span>
-          <p class="placeholder-title">Immagine principale della struttura</p>
-          <p class="placeholder-note">Ampio spazio introduttivo per raccontare l'identità del centro.</p>
-        </div>
+      <div class="gallery-item large">
+        <img src="assets/images/Chi-Siamo.png" alt="BM Horse - Chi siamo, cavallo bianco" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
-      <div class="gallery-placeholder tall">
-        <div class="placeholder-content">
-          <span class="placeholder-tag">Portrait</span>
-          <p class="placeholder-title">Staff o dettaglio emozionale</p>
-          <p class="placeholder-note">Ritratto verticale o momento autentico.</p>
-        </div>
+      <div class="gallery-item tall">
+        <img src="assets/images/Chi-Siamo-1.png" alt="BM Horse - Chi siamo, fondatrice con cavallo" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="gallery-placeholder medium">
         <div class="placeholder-content">
